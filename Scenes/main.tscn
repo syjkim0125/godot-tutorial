@@ -1,0 +1,121 @@
+[gd_scene load_steps=23 format=3 uid="uid://b037874bnmai0"]
+
+[ext_resource type="Script" path="res://Scenes/Player_Motion.gd" id="1_7cjqm"]
+[ext_resource type="Script" path="res://Scenes/Control_Character.gd" id="1_mjqq2"]
+[ext_resource type="Texture2D" uid="uid://bx66tubxoidap" path="res://Art/Player_Sprite.png" id="1_w4ksk"]
+[ext_resource type="Texture2D" uid="uid://cywixr7swyxy3" path="res://Art/room0_background.png" id="2_itmb3"]
+[ext_resource type="Texture2D" uid="uid://dtnaiyr3ow25s" path="res://Art/room0_sideWalls.png" id="3_s70e6"]
+[ext_resource type="Texture2D" uid="uid://sff6akcgr5pf" path="res://Art/room0_floor.png" id="4_4u0u2"]
+[ext_resource type="Texture2D" uid="uid://vnql35rkf2w6" path="res://Player/Animations/move/player_move0000.png" id="4_5t233"]
+[ext_resource type="Texture2D" uid="uid://dixadu2iq7wo8" path="res://Player/Animations/move/player_move0001.png" id="5_hnqby"]
+[ext_resource type="Texture2D" uid="uid://cv2safc6fy6md" path="res://Art/room0_staircase.png" id="5_mch5h"]
+[ext_resource type="Texture2D" uid="uid://wbm08ikxnwkl" path="res://Art/room0_foreground.png" id="6_6p1a0"]
+[ext_resource type="Texture2D" uid="uid://c6ynsbyfjfkrd" path="res://Player/Animations/move/player_move0002.png" id="6_6ypk2"]
+[ext_resource type="Texture2D" uid="uid://bgyhlxb4u84m5" path="res://Player/Animations/move/player_move0003.png" id="7_ejrs1"]
+[ext_resource type="Texture2D" uid="uid://bumakwa25y8b5" path="res://Art/room0_light.png" id="8_76c7b"]
+[ext_resource type="Texture2D" uid="uid://cuvtjubu388ye" path="res://Player/Animations/move/player_move0004.png" id="8_fdyfg"]
+[ext_resource type="Shader" uid="uid://bnxx1an28ft2x" path="res://Environment/Room0/light.tres" id="8_rw0xd"]
+[ext_resource type="Texture2D" uid="uid://csqnluqanqgcf" path="res://Player/Animations/move/player_move0005.png" id="9_j7sjh"]
+[ext_resource type="Texture2D" uid="uid://dpgxwyouyqemd" path="res://Player/Animations/move/player_move0006.png" id="10_8y7ob"]
+[ext_resource type="Texture2D" uid="uid://yw80n067tt5t" path="res://Player/Animations/move/player_move0007.png" id="11_ev2q8"]
+[ext_resource type="Script" path="res://Scenes/NavigationRegion2D.gd" id="19_rdcuu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nn4h4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w4ksk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5t233")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hnqby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6ypk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ejrs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fdyfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j7sjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8y7ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ev2q8")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_son5h"]
+shader = ExtResource("8_rw0xd")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kg8yd"]
+vertices = PackedVector2Array(804, 383, 886, 506, -328, 509, 575, 400, 583, 385, 425, 403, 402, 388, 294, 391, -373, 381, -314, 327, 247, 327, -391, 438)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 0), PackedInt32Array(5, 3, 2), PackedInt32Array(6, 5, 2, 7), PackedInt32Array(8, 9, 10, 7, 2, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 294, 391, 402, 388, 425, 403, 575, 400, 583, 385, 804, 383, 886, 506, -328, 509, -391, 438, -373, 381)])
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mjqq2")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_7cjqm")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
+z_index = 1
+position = Vector2(0, 350)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_nn4h4")
+animation = &"idle"
+speed_scale = 6.0
+offset = Vector2(0, -220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="room0_background" type="Sprite2D" parent="WorldEnvironment"]
+texture = ExtResource("2_itmb3")
+
+[node name="room0_sidewalls" type="Sprite2D" parent="WorldEnvironment"]
+texture = ExtResource("3_s70e6")
+
+[node name="room0_floor" type="Sprite2D" parent="WorldEnvironment"]
+texture = ExtResource("4_4u0u2")
+
+[node name="room0_staircase" type="Sprite2D" parent="WorldEnvironment"]
+texture = ExtResource("5_mch5h")
+
+[node name="room0_foreground" type="Sprite2D" parent="WorldEnvironment"]
+z_index = 2
+texture = ExtResource("6_6p1a0")
+
+[node name="room0_light" type="Sprite2D" parent="WorldEnvironment"]
+material = SubResource("ShaderMaterial_son5h")
+texture = ExtResource("8_76c7b")
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(1, 0.298039, 1, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_kg8yd")
+script = ExtResource("19_rdcuu")
