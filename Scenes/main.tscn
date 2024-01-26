@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://b037874bnmai0"]
+[gd_scene load_steps=22 format=3 uid="uid://b037874bnmai0"]
 
 [ext_resource type="Script" path="res://Scenes/Player_Motion.gd" id="1_7cjqm"]
-[ext_resource type="Script" path="res://Scenes/Control_Character.gd" id="1_mjqq2"]
 [ext_resource type="Texture2D" uid="uid://bx66tubxoidap" path="res://Art/Player_Sprite.png" id="1_w4ksk"]
 [ext_resource type="Texture2D" uid="uid://cywixr7swyxy3" path="res://Art/room0_background.png" id="2_itmb3"]
 [ext_resource type="Texture2D" uid="uid://dtnaiyr3ow25s" path="res://Art/room0_sideWalls.png" id="3_s70e6"]
@@ -73,21 +72,22 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_mjqq2")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(0, 400)
 script = ExtResource("1_7cjqm")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player"]
 z_index = 1
-position = Vector2(0, 350)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_nn4h4")
 animation = &"idle"
-speed_scale = 6.0
+speed_scale = 2.0
 offset = Vector2(0, -220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Player"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -114,6 +114,7 @@ material = SubResource("ShaderMaterial_son5h")
 texture = ExtResource("8_76c7b")
 
 [node name="Line2D" type="Line2D" parent="."]
+z_index = 1
 default_color = Color(1, 0.298039, 1, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
