@@ -1,83 +1,89 @@
 extends CharacterBody2D
 
 
-var destination = Vector2()
-var distance = Vector2()
-var snapPosition = Vector2()
+@onready var navReg: NavigationRegion2D = $"../NavigationRegion2D"
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
 
-var path : PackedVector2Array
-
-@export var speed = 250
+var speed: int = 250
+var path: PackedVector2Array = []
+var map: RID
 
 enum {IDLE, MOVE, CLIMB, INTERACT}
-
 var state = IDLE
 
-var margin = 1
-
 func _ready():
-	destination = position
+	call_deferred("setup_nav_server")
 	
+func _unhandled_input(event):
+	if not event.is_action_pressed('ui_leftMouseClick'):
+		return
+	update_nav_path($"../Player".position, get_global_mouse_position())
+
+func setup_nav_server():
+	map = NavigationServer2D.map_create()
+	NavigationServer2D.map_set_active(map, true)
+	NavigationServer2D.map_set_cell_size(map, 1)
+	
+	var region = NavigationServer2D.region_create()
+	NavigationServer2D.region_set_transform(region, Transform2D())
+	NavigationServer2D.region_set_map(region, map)
+	
+	var nav_poly = NavigationMesh.new()
+	nav_poly = $"../NavigationRegion2D".navigation_polygon
+	NavigationServer2D.region_set_navigation_polygon(region, nav_poly)
+	
+func update_nav_path(start_position, end_position):
+	path = NavigationServer2D.map_get_path(map, start_position, end_position, true)
+	
+	$"../Line2D".clear_points()
+	
+	for i in path:
+		$"../Line2D".add_point(i)
+		
+	path.remove_at(0)
+	$"../Player".change_state(MOVE)
+	set_process(true)
+
 func _process(delta):
-	var move_distance = speed * delta
-	
+	var walk_distance = speed * delta
+#	move_along_path(walk_distance)
 	match state:
 		IDLE:
 			pass
 		MOVE:
-			move_along_path(move_distance)
+			move_along_path(walk_distance)
 	pass
 	
 func move_along_path(distance):
-	var starting_point : = position
+	var last_point = $"../Player".position
 	
-	if(starting_point.x < path[0].x):
-		$Player.flip_h = false
-	if(starting_point.x > path[0].x):
-		$Player.flip_h = true
+	if(last_point.x < path[0].x):
+		$PlayerSprite.flip_h = false
+	if(last_point.x > path[0].x):
+		$PlayerSprite.flip_h = true
 	
-	for i in range(path.size()):
-		var distance_to_next : = starting_point.distance_to(path[0])
+	while path.size():
+		var distance_between_points = last_point.distance_to(path[0])
+		if distance <= distance_between_points:
+			$"../Player".position = last_point.lerp(path[0], distance / distance_between_points)
+			return
+			
+		distance -= distance_between_points
+		last_point = path[0]
+		path.remove_at(0)
 		
-		if(distance <= distance_to_next):
-			position = starting_point.lerp(path[0], distance / distance_to_next)
-			break
-		
-		path.clear()
-		
-		if(path.size() == 0):
-			$Player.change_state(IDLE)
-	
-	pass
+	$"../Player".position = last_point
+	if(path.size() == 0):
+		$"../Player".change_state(IDLE)
+	set_process(false)
 	
 func change_state(newState):
 	state = newState
 	
+	print(state)
+
 	match state:
 		IDLE:
-			$Player.IDLE
+			$PlayerSprite.play("idle")
 		MOVE:
-			$Player.MOVE
-			
-#func _process(delta):
-#	if(position != destination):
-#		distance = Vector2(destination - position)
-#		velocity.x = distance.normalized().x * speed
-#		velocity.y = distance.normalized().x * 0
-#		move_and_slide()
-#
-#		if(distance.length() < margin):
-#			set_position(snapPosition)
-#
-#	if(destination.x > position.x):
-#		$Player_Sprite.flip_h = false
-#	if(destination.x < position.x):
-#		$Player_Sprite.flip_h = true
-#
-#	pass
-
-#func _input(event):
-#	if Input.is_action_pressed("ui_leftMouseClick"):
-#		destination = get_global_mouse_position()
-#		snapPosition.x = destination.x
-#		snapPosition.y = position.y
+			$PlayerSprite.play("move")
