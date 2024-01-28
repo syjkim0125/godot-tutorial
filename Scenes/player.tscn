@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://cp1iegaja2e8i"]
+
+[ext_resource type="Script" path="res://Scenes/Player_Motion.gd" id="1_vsacw"]
+[ext_resource type="Texture2D" uid="uid://bx66tubxoidap" path="res://Art/Player_Sprite.png" id="2_dbhr0"]
+[ext_resource type="Texture2D" uid="uid://vnql35rkf2w6" path="res://Player/Animations/move/player_move0000.png" id="3_650ap"]
+[ext_resource type="Texture2D" uid="uid://dixadu2iq7wo8" path="res://Player/Animations/move/player_move0001.png" id="4_45mr1"]
+[ext_resource type="Texture2D" uid="uid://c6ynsbyfjfkrd" path="res://Player/Animations/move/player_move0002.png" id="5_4dvmw"]
+[ext_resource type="Texture2D" uid="uid://bgyhlxb4u84m5" path="res://Player/Animations/move/player_move0003.png" id="6_6fwyl"]
+[ext_resource type="Texture2D" uid="uid://cuvtjubu388ye" path="res://Player/Animations/move/player_move0004.png" id="7_gcf62"]
+[ext_resource type="Texture2D" uid="uid://csqnluqanqgcf" path="res://Player/Animations/move/player_move0005.png" id="8_keiw8"]
+[ext_resource type="Texture2D" uid="uid://dpgxwyouyqemd" path="res://Player/Animations/move/player_move0006.png" id="9_6ck6q"]
+[ext_resource type="Texture2D" uid="uid://yw80n067tt5t" path="res://Player/Animations/move/player_move0007.png" id="10_lhpxn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l11ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dbhr0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_650ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_45mr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4dvmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6fwyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gcf62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_keiw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6ck6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lhpxn")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 400)
+script = ExtResource("1_vsacw")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_l11ef")
+animation = &"idle"
+speed_scale = 2.0
+offset = Vector2(0, -220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
