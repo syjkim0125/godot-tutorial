@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://homwnmb7ey2t"]
+
+[ext_resource type="Texture2D" uid="uid://cywixr7swyxy3" path="res://Art/room0_background.png" id="1_5ci04"]
+[ext_resource type="Script" path="res://Scenes/Turotial_Map.gd" id="1_kuvj7"]
+[ext_resource type="Texture2D" uid="uid://dtnaiyr3ow25s" path="res://Art/room0_sideWalls.png" id="2_q0hxq"]
+[ext_resource type="Texture2D" uid="uid://sff6akcgr5pf" path="res://Art/room0_floor.png" id="3_2letn"]
+[ext_resource type="Texture2D" uid="uid://cv2safc6fy6md" path="res://Art/room0_staircase.png" id="4_h6631"]
+[ext_resource type="Texture2D" uid="uid://wbm08ikxnwkl" path="res://Art/room0_foreground.png" id="5_jk60r"]
+[ext_resource type="Shader" uid="uid://bnxx1an28ft2x" path="res://Environment/Room0/light.tres" id="6_63trq"]
+[ext_resource type="Texture2D" uid="uid://bumakwa25y8b5" path="res://Art/room0_light.png" id="7_31b0l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
+shader = ExtResource("6_63trq")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_q2d8s"]
+vertices = PackedVector2Array(804, 383, 886, 506, -328, 509, 575, 400, 583, 385, 425, 403, 402, 388, 294, 391, -373, 381, -314, 327, 247, 327, -391, 438)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 0), PackedInt32Array(5, 3, 2), PackedInt32Array(6, 5, 2, 7), PackedInt32Array(8, 9, 10, 7, 2, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 294, 391, 402, 388, 425, 403, 575, 400, 583, 385, 804, 383, 886, 506, -328, 509, -391, 438, -373, 381)])
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+script = ExtResource("1_kuvj7")
+
+[node name="room0_background" type="Sprite2D" parent="."]
+texture = ExtResource("1_5ci04")
+
+[node name="room0_sidewalls" type="Sprite2D" parent="."]
+texture = ExtResource("2_q0hxq")
+
+[node name="room0_floor" type="Sprite2D" parent="."]
+texture = ExtResource("3_2letn")
+
+[node name="room0_staircase" type="Sprite2D" parent="."]
+texture = ExtResource("4_h6631")
+
+[node name="room0_foreground" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("5_jk60r")
+
+[node name="room0_light" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pu4y5")
+texture = ExtResource("7_31b0l")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 1
+default_color = Color(1, 0.298039, 1, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_q2d8s")
