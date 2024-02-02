@@ -9,9 +9,6 @@ var map: RID
 
 enum {IDLE, MOVE, CLIMB, INTERACT}
 var state = IDLE
-
-func _ready():
-	call_deferred("setup_nav_server")
 	
 func _unhandled_input(event):
 	if not event.is_action_pressed('ui_leftMouseClick'):
@@ -19,9 +16,6 @@ func _unhandled_input(event):
 	path = $"../WorldEnvironment".update_nav_path(path, $"../Player".position, get_global_mouse_position())
 	$"../Player".change_state(MOVE)
 	set_process(true)
-
-func setup_nav_server():
-	$"../WorldEnvironment".setup_nav_server()
 
 func _process(delta):
 	var walk_distance = speed * delta
