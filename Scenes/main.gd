@@ -1,7 +1,6 @@
 extends Control
 
 enum {IDLE, MOVE, CLIMB, INTERACT}
-
 var path: PackedVector2Array = []
 
 func _ready():
