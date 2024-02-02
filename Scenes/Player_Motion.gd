@@ -1,21 +1,10 @@
 extends CharacterBody2D
 
-
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
-
 var speed: int = 250
 var path: PackedVector2Array = []
-var map: RID
 
 enum {IDLE, MOVE, CLIMB, INTERACT}
 var state = IDLE
-	
-func _unhandled_input(event):
-	if not event.is_action_pressed('ui_leftMouseClick'):
-		return
-	path = $"../WorldEnvironment".update_nav_path(path, $"../Player".position, get_global_mouse_position())
-	$"../Player".change_state(MOVE)
-	set_process(true)
 
 func _process(delta):
 	var walk_distance = speed * delta
@@ -52,14 +41,14 @@ func move_along_path(distance):
 	
 func change_state(newState):
 	state = newState
-	
-	print(state)
 
 	match state:
 		IDLE:
 			$PlayerSprite.play("idle")
 		MOVE:
 			$PlayerSprite.play("move")
+			
+	set_process(true)
 			
 func start(pos):
 	position = pos
