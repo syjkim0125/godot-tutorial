@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=12 format=3 uid="uid://homwnmb7ey2t"]
 
-[ext_resource type="Texture2D" uid="uid://cywixr7swyxy3" path="res://Art/room0_background.png" id="1_5ci04"]
 [ext_resource type="Script" path="res://Scenes/Turotial_Map.gd" id="1_kuvj7"]
-[ext_resource type="Texture2D" uid="uid://dtnaiyr3ow25s" path="res://Art/room0_sideWalls.png" id="2_q0hxq"]
-[ext_resource type="Texture2D" uid="uid://sff6akcgr5pf" path="res://Art/room0_floor.png" id="3_2letn"]
-[ext_resource type="Texture2D" uid="uid://cv2safc6fy6md" path="res://Art/room0_staircase.png" id="4_h6631"]
-[ext_resource type="Texture2D" uid="uid://wbm08ikxnwkl" path="res://Art/room0_foreground.png" id="5_jk60r"]
+[ext_resource type="Texture2D" uid="uid://bhdifi0jbwqx8" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
+[ext_resource type="Texture2D" uid="uid://bn1qhu4jml3nk" path="res://Art/Environment/room0_sideWalls.png" id="3_tynwc"]
+[ext_resource type="Texture2D" uid="uid://x0xyke5t6lf6" path="res://Art/Environment/room0_floor.png" id="4_1l0bs"]
+[ext_resource type="Texture2D" uid="uid://bn74kjrwv7si2" path="res://Art/Environment/room0_staircase.png" id="5_o366d"]
 [ext_resource type="Shader" uid="uid://bnxx1an28ft2x" path="res://Environment/Room0/light.tres" id="6_63trq"]
-[ext_resource type="Texture2D" uid="uid://bumakwa25y8b5" path="res://Art/room0_light.png" id="7_31b0l"]
+[ext_resource type="Texture2D" uid="uid://c3atpjqbqdmcr" path="res://Art/Environment/room0_foreground.png" id="6_p0bvr"]
+[ext_resource type="Texture2D" uid="uid://dbhxfthhqesbl" path="res://Art/Environment/room0_light.png" id="8_2gxsp"]
+[ext_resource type="Texture2D" uid="uid://b1dtsq4ct5jyt" path="res://Art/Environment/room0_curtain.png" id="9_43iqt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
 shader = ExtResource("6_63trq")
@@ -21,24 +22,27 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 29
 script = ExtResource("1_kuvj7")
 
 [node name="room0_background" type="Sprite2D" parent="."]
-texture = ExtResource("1_5ci04")
+texture = ExtResource("2_eayi5")
 
 [node name="room0_sidewalls" type="Sprite2D" parent="."]
-texture = ExtResource("2_q0hxq")
+texture = ExtResource("3_tynwc")
 
 [node name="room0_floor" type="Sprite2D" parent="."]
-texture = ExtResource("3_2letn")
+texture = ExtResource("4_1l0bs")
 
 [node name="room0_staircase" type="Sprite2D" parent="."]
-texture = ExtResource("4_h6631")
+texture = ExtResource("5_o366d")
 
 [node name="room0_foreground" type="Sprite2D" parent="."]
 z_index = 2
-texture = ExtResource("5_jk60r")
+texture = ExtResource("6_p0bvr")
 
 [node name="room0_light" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pu4y5")
-texture = ExtResource("7_31b0l")
+texture = ExtResource("8_2gxsp")
+
+[node name="room0_curtain" type="Sprite2D" parent="."]
+texture = ExtResource("9_43iqt")
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 1
