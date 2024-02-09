@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=13 format=3 uid="uid://homwnmb7ey2t"]
 
 [ext_resource type="Script" path="res://Scenes/Turotial_Map.gd" id="1_kuvj7"]
 [ext_resource type="Texture2D" uid="uid://bhdifi0jbwqx8" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c3atpjqbqdmcr" path="res://Art/Environment/room0_foreground.png" id="6_p0bvr"]
 [ext_resource type="Texture2D" uid="uid://dbhxfthhqesbl" path="res://Art/Environment/room0_light.png" id="8_2gxsp"]
 [ext_resource type="Texture2D" uid="uid://b1dtsq4ct5jyt" path="res://Art/Environment/room0_curtain.png" id="9_43iqt"]
+[ext_resource type="Script" path="res://Scenes/alternate_Zindex.gd" id="10_7dmrh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
 shader = ExtResource("6_63trq")
@@ -34,15 +35,19 @@ texture = ExtResource("4_1l0bs")
 texture = ExtResource("5_o366d")
 
 [node name="room0_foreground" type="Sprite2D" parent="."]
-z_index = 2
 texture = ExtResource("6_p0bvr")
 
+[node name="room0_curtain" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("9_43iqt")
+script = ExtResource("10_7dmrh")
+high_index = 2
+y_threshold = 400.0
+
 [node name="room0_light" type="Sprite2D" parent="."]
+z_index = 2
 material = SubResource("ShaderMaterial_pu4y5")
 texture = ExtResource("8_2gxsp")
-
-[node name="room0_curtain" type="Sprite2D" parent="."]
-texture = ExtResource("9_43iqt")
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 1
