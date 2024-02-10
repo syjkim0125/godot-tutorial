@@ -87,8 +87,3 @@ func change_state(newState):
 			$PlayerSprite.play("move")
 			
 	set_process(true)
-			
-func start(pos):
-	position = pos
-	show()
-	$CollisionShape2D.disabled = false
