@@ -27,3 +27,17 @@ func update_nav_path(path, start_position, end_position):
 
 	path.remove_at(0)
 	return path
+
+
+func _on_climb_area_body_entered(body):
+	if body.get_name() != "Player":
+		return
+	$"../Player".is_climbing = true
+	pass
+
+
+func _on_climb_area_body_exited(body):
+	if body.get_name() != "Player":
+		return
+	$"../Player".is_climbing = false
+	pass

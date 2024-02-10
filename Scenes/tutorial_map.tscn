@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=14 format=3 uid="uid://homwnmb7ey2t"]
 
 [ext_resource type="Script" path="res://Scenes/Turotial_Map.gd" id="1_kuvj7"]
 [ext_resource type="Texture2D" uid="uid://bhdifi0jbwqx8" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
@@ -15,9 +15,12 @@
 shader = ExtResource("6_63trq")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q2d8s"]
-vertices = PackedVector2Array(804, 383, 886, 506, -328, 509, 575, 400, 583, 385, 425, 403, 402, 388, 294, 391, -373, 381, -314, 327, 247, 327, -391, 438)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 0), PackedInt32Array(5, 3, 2), PackedInt32Array(6, 5, 2, 7), PackedInt32Array(8, 9, 10, 7, 2, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 294, 391, 402, 388, 425, 403, 575, 400, 583, 385, 804, 383, 886, 506, -328, 509, -391, 438, -373, 381)])
+vertices = PackedVector2Array(804, 383, 886, 506, -328, 509, 572, 400, 597, -72, 570, -64, 409, -63, 385, -68, 412, -108, 601, -107, 411, 394, -391, 438, -373, 381, -314, 327, 247, 327, 294, 391, 583, 385, 402, 388)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(6, 5, 3, 10), PackedInt32Array(2, 11, 12, 13, 14, 15), PackedInt32Array(3, 16, 0), PackedInt32Array(3, 2, 15, 10), PackedInt32Array(10, 15, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 294, 391, 402, 388, 411, 394, 409, -63, 385, -68, 412, -108, 601, -107, 597, -72, 570, -64, 572, 400, 583, 385, 804, 383, 886, 506, -328, 509, -391, 438, -373, 381)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pprue"]
+size = Vector2(157, 452)
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 script = ExtResource("1_kuvj7")
@@ -55,3 +58,12 @@ default_color = Color(1, 0.298039, 1, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_q2d8s")
+
+[node name="ClimbArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea"]
+position = Vector2(491.5, 163)
+shape = SubResource("RectangleShape2D_pprue")
+
+[connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
+[connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
