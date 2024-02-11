@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=21 format=3 uid="uid://homwnmb7ey2t"]
 
 [ext_resource type="Script" path="res://Scripts/Turotial_Map.gd" id="1_gje1w"]
 [ext_resource type="Texture2D" uid="uid://cqm4syw001rhn" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cf474irg0c0j0" path="res://Art/Environment/room0_light.png" id="8_2gxsp"]
 [ext_resource type="Texture2D" uid="uid://cxdne5d3tlpft" path="res://Art/Environment/room0_curtain.png" id="9_43iqt"]
 [ext_resource type="Texture2D" uid="uid://dn27l5euqicpi" path="res://Environment/Room0/room0_stuff.png" id="11_cbk6g"]
+[ext_resource type="Script" path="res://Scripts/Interactions/Interaction_Template.gd" id="12_0db7d"]
 [ext_resource type="Texture2D" uid="uid://bhvv6wxjlcmco" path="res://icon.svg" id="12_jtp4r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
@@ -26,6 +27,91 @@ size = Vector2(157, 407)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmxly"]
 size = Vector2(96, 109)
+
+[sub_resource type="Animation" id="Animation_vmihy"]
+resource_name = "Interact"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-9.53674e-07, 6.67572e-06), Vector2(-9.53674e-07, -30), Vector2(-9.53674e-07, 6.67572e-06)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.734375, 0.84375), Vector2(0.734375, 1.3125), Vector2(0.734375, 0.84375)]
+}
+
+[sub_resource type="Animation" id="Animation_08fgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9.53674e-07, 6.67572e-06)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.734375, 0.84375)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2xtx"]
+_data = {
+"Interact": SubResource("Animation_vmihy"),
+"RESET": SubResource("Animation_08fgk")
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 script = ExtResource("1_gje1w")
@@ -84,11 +170,17 @@ z_index = 2
 z_index = 1
 position = Vector2(283, 380)
 shape = SubResource("RectangleShape2D_tmxly")
+script = ExtResource("12_0db7d")
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractionObjects/CollisionShape2D"]
 position = Vector2(-9.53674e-07, 6.67572e-06)
 scale = Vector2(0.734375, 0.84375)
 texture = ExtResource("12_jtp4r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractionObjects/CollisionShape2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_h2xtx")
+}
 
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]

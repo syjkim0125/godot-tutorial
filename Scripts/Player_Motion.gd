@@ -91,7 +91,7 @@ func change_state(newState):
 		MOVE:
 			$PlayerSprite.play("move")
 		INTERACT:
+			interactable_object.interact()
 			$PlayerSprite.play("interact")
-			print("yayyyyy")
 			
 	set_process(true)
