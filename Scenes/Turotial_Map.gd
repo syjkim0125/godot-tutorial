@@ -1,7 +1,5 @@
 extends WorldEnvironment
 
-@onready var navReg: NavigationRegion2D = $NavigationRegion2D
-
 var map: RID
 
 func setup_nav_server():
@@ -41,3 +39,11 @@ func _on_climb_area_body_exited(body):
 		return
 	$"../Player".is_climbing = false
 	pass
+
+
+func _on_interaction_objects_input_event(viewport, event, shape_idx):
+	if !Input.is_action_just_pressed("ui_leftMouseClick"):
+		return
+		
+	$"../Player".is_going_to_interact = true
+	$"../Player".interactable_object = $InteractionObjects.get_child(shape_idx)

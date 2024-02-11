@@ -6,6 +6,8 @@ var path: PackedVector2Array = []
 enum {IDLE, MOVE, CLIMB, INTERACT}
 var state = IDLE
 var is_climbing: bool
+var is_going_to_interact: bool
+var interactable_object
 
 func _ready():
 	is_climbing = false
@@ -45,7 +47,10 @@ func move_along_path(distance):
 		
 	$"../Player".position = last_point
 	if(path.size() == 0):
-		$"../Player".change_state(IDLE)
+		if(is_going_to_interact):
+			$"../Player".change_state(INTERACT)
+		else:
+			$"../Player".change_state(IDLE)
 	set_process(false)
 	
 func climb_along_path(distance):
@@ -85,5 +90,8 @@ func change_state(newState):
 				$PlayerSprite.play("climb_idle")
 		MOVE:
 			$PlayerSprite.play("move")
+		INTERACT:
+			$PlayerSprite.play("interact")
+			print("yayyyyy")
 			
 	set_process(true)
