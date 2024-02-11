@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://cp1iegaja2e8i"]
 
-[ext_resource type="Script" path="res://Scenes/Player_Motion.gd" id="1_vsacw"]
+[ext_resource type="Script" path="res://Scripts/Player_Motion.gd" id="1_i8faq"]
 [ext_resource type="Texture2D" uid="uid://brt387uhc3cyk" path="res://Art/Player/Player_Sprite.png" id="2_67vdc"]
 [ext_resource type="Texture2D" uid="uid://b1sj0xpsn7mlu" path="res://Art/Player/Climb_Animation/player_climb0000.png" id="2_jhith"]
 [ext_resource type="Texture2D" uid="uid://c5pfoachpntyg" path="res://Art/Player/Climb_Animation/player_climb0001.png" id="3_b4c4p"]
@@ -166,7 +166,7 @@ size = Vector2(43.5, 8)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 400)
-script = ExtResource("1_vsacw")
+script = ExtResource("1_i8faq")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 z_index = 1
