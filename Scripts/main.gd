@@ -13,7 +13,7 @@ func _input(event):
 	if !Input.is_action_just_pressed("ui_leftMouseClick"):
 		return
 		
-	var new_path = $WorldEnvironment.update_nav_path(path, $Player.position, get_global_mouse_position())
+	var new_path = $WorldEnvironment.update_nav_path(path, $Player.get_global_position(), get_global_mouse_position())
 	
 	$Player.path = new_path
 	$Player.is_going_to_interact = false

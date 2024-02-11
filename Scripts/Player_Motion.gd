@@ -8,6 +8,7 @@ var state = IDLE
 var is_climbing: bool
 var is_going_to_interact: bool
 var interactable_object
+var interaction_timer: int = 1
 
 func _ready():
 	is_climbing = false
@@ -22,10 +23,12 @@ func _process(delta):
 			move_along_path(walk_distance)
 		CLIMB:
 			climb_along_path(walk_distance)
+		INTERACT:
+			interact(delta)
 	pass
 	
 func move_along_path(distance):
-	var last_point = $"../Player".position
+	var last_point = $"../Player".get_global_position()
 	
 	if(is_climbing):
 		$"../Player".change_state(CLIMB)
@@ -38,14 +41,14 @@ func move_along_path(distance):
 	while path.size():
 		var distance_between_points = last_point.distance_to(path[0])
 		if distance <= distance_between_points:
-			$"../Player".position = last_point.lerp(path[0], distance / distance_between_points)
+			$"../Player".set_global_position(last_point.lerp(path[0], distance / distance_between_points))
 			return
 			
 		distance -= distance_between_points
 		last_point = path[0]
 		path.remove_at(0)
 		
-	$"../Player".position = last_point
+	$"../Player".set_global_position(last_point)
 	if(path.size() == 0):
 		if(is_going_to_interact):
 			$"../Player".change_state(INTERACT)
@@ -54,7 +57,7 @@ func move_along_path(distance):
 	set_process(false)
 	
 func climb_along_path(distance):
-	var last_point = $"../Player".position
+	var last_point = $"../Player".get_global_position()
 	
 	if(last_point.y > path[0].y):
 		$PlayerSprite.play("climb")
@@ -67,14 +70,14 @@ func climb_along_path(distance):
 	while path.size():
 		var distance_between_points = last_point.distance_to(path[0])
 		if distance <= distance_between_points:
-			$"../Player".position = last_point.lerp(path[0], distance / distance_between_points)
+			$"../Player".set_global_position(last_point.lerp(path[0], distance / distance_between_points))
 			return
 			
 		distance -= distance_between_points
 		last_point = path[0]
 		path.remove_at(0)
 		
-	$"../Player".position = last_point
+	$"../Player".set_global_position(last_point)
 	if(path.size() == 0):
 		$"../Player".change_state(IDLE)
 	set_process(false)
@@ -95,3 +98,9 @@ func change_state(newState):
 			$PlayerSprite.play("interact")
 			
 	set_process(true)
+	
+func interact(delta):
+	interaction_timer -= delta
+	if(interaction_timer <= 0):
+		$"../Player".change_state(IDLE)
+		interaction_timer = 1

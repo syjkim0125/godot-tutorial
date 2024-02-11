@@ -182,6 +182,9 @@ libraries = {
 "": SubResource("AnimationLibrary_h2xtx")
 }
 
+[node name="Marker2D" type="Marker2D" parent="InteractionObjects/CollisionShape2D"]
+position = Vector2(-19, 52)
+
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
 [connection signal="input_event" from="InteractionObjects" to="." method="_on_interaction_objects_input_event"]

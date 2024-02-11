@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b037874bnmai0"]
 
 [ext_resource type="PackedScene" uid="uid://cp1iegaja2e8i" path="res://Scenes/player.tscn" id="1_1ywod"]
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_duibp"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_m50hg"]
 [ext_resource type="PackedScene" uid="uid://homwnmb7ey2t" path="res://Scenes/tutorial_map.tscn" id="2_wqage"]
 
 [node name="Main" type="Control"]
@@ -9,7 +9,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_duibp")
+script = ExtResource("1_m50hg")
 
 [node name="Player" parent="." instance=ExtResource("1_1ywod")]
 
