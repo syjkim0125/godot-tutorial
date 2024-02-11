@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=15 format=3 uid="uid://homwnmb7ey2t"]
 
 [ext_resource type="Script" path="res://Scenes/Turotial_Map.gd" id="1_kuvj7"]
-[ext_resource type="Texture2D" uid="uid://bhdifi0jbwqx8" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
-[ext_resource type="Texture2D" uid="uid://bn1qhu4jml3nk" path="res://Art/Environment/room0_sideWalls.png" id="3_tynwc"]
-[ext_resource type="Texture2D" uid="uid://x0xyke5t6lf6" path="res://Art/Environment/room0_floor.png" id="4_1l0bs"]
-[ext_resource type="Texture2D" uid="uid://bn74kjrwv7si2" path="res://Art/Environment/room0_staircase.png" id="5_o366d"]
+[ext_resource type="Texture2D" uid="uid://cqm4syw001rhn" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
+[ext_resource type="Texture2D" uid="uid://bd0ok2r61od0p" path="res://Art/Environment/room0_sideWalls.png" id="3_tynwc"]
+[ext_resource type="Texture2D" uid="uid://dcv7qffecpchy" path="res://Art/Environment/room0_floor.png" id="4_1l0bs"]
+[ext_resource type="Texture2D" uid="uid://v4wuu2efwqj" path="res://Art/Environment/room0_staircase.png" id="5_o366d"]
 [ext_resource type="Shader" uid="uid://bnxx1an28ft2x" path="res://Environment/Room0/light.tres" id="6_63trq"]
-[ext_resource type="Texture2D" uid="uid://c3atpjqbqdmcr" path="res://Art/Environment/room0_foreground.png" id="6_p0bvr"]
-[ext_resource type="Texture2D" uid="uid://dbhxfthhqesbl" path="res://Art/Environment/room0_light.png" id="8_2gxsp"]
-[ext_resource type="Texture2D" uid="uid://b1dtsq4ct5jyt" path="res://Art/Environment/room0_curtain.png" id="9_43iqt"]
+[ext_resource type="Texture2D" uid="uid://by0gmu2csqv5t" path="res://Art/Environment/room0_foreground.png" id="6_p0bvr"]
+[ext_resource type="Texture2D" uid="uid://cf474irg0c0j0" path="res://Art/Environment/room0_light.png" id="8_2gxsp"]
+[ext_resource type="Texture2D" uid="uid://cxdne5d3tlpft" path="res://Art/Environment/room0_curtain.png" id="9_43iqt"]
 [ext_resource type="Script" path="res://Scenes/alternate_Zindex.gd" id="10_7dmrh"]
+[ext_resource type="Texture2D" uid="uid://dn27l5euqicpi" path="res://Environment/Room0/room0_stuff.png" id="11_cbk6g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
 shader = ExtResource("6_63trq")
@@ -26,6 +27,7 @@ size = Vector2(157, 452)
 script = ExtResource("1_kuvj7")
 
 [node name="room0_background" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
 texture = ExtResource("2_eayi5")
 
 [node name="room0_sidewalls" type="Sprite2D" parent="."]
@@ -37,9 +39,6 @@ texture = ExtResource("4_1l0bs")
 [node name="room0_staircase" type="Sprite2D" parent="."]
 texture = ExtResource("5_o366d")
 
-[node name="room0_foreground" type="Sprite2D" parent="."]
-texture = ExtResource("6_p0bvr")
-
 [node name="room0_curtain" type="Sprite2D" parent="."]
 z_index = 2
 texture = ExtResource("9_43iqt")
@@ -47,10 +46,20 @@ script = ExtResource("10_7dmrh")
 high_index = 2
 y_threshold = 400.0
 
+[node name="room0_stuff" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(-578, 278)
+texture = ExtResource("11_cbk6g")
+
 [node name="room0_light" type="Sprite2D" parent="."]
-z_index = 2
+modulate = Color(0.396078, 1, 1, 1)
+z_index = 3
 material = SubResource("ShaderMaterial_pu4y5")
 texture = ExtResource("8_2gxsp")
+
+[node name="room0_foreground" type="Sprite2D" parent="."]
+z_index = 3
+texture = ExtResource("6_p0bvr")
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 1
