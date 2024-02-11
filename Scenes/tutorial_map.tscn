@@ -17,9 +17,9 @@
 shader = ExtResource("6_63trq")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_q2d8s"]
-vertices = PackedVector2Array(804, 383, 886, 506, -328, 509, 572, 400, 597, -72, 570, -64, 409, -63, 385, -68, 412, -108, 601, -107, 411, 394, -391, 438, -373, 381, -314, 327, 247, 327, 294, 391, 583, 385, 402, 388)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(6, 5, 3, 10), PackedInt32Array(2, 11, 12, 13, 14, 15), PackedInt32Array(3, 16, 0), PackedInt32Array(3, 2, 15, 10), PackedInt32Array(10, 15, 17)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 294, 391, 402, 388, 411, 394, 409, -63, 385, -68, 412, -108, 601, -107, 597, -72, 570, -64, 572, 400, 583, 385, 804, 383, 886, 506, -328, 509, -391, 438, -373, 381)])
+vertices = PackedVector2Array(804, 383, 886, 506, -328, 509, 572, 400, 413, -57, 572, -57, 598, -20, 570, -18, 409, -17, 386, -23, 411, 394, -391, 438, -373, 381, -314, 327, 247, 327, 294, 391, 583, 385, 402, 388)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(8, 7, 3, 10), PackedInt32Array(2, 11, 12, 13, 14, 15), PackedInt32Array(3, 16, 0), PackedInt32Array(3, 2, 15, 10), PackedInt32Array(10, 15, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-314, 327, 247, 327, 294, 391, 402, 388, 411, 394, 409, -17, 386, -23, 413, -57, 572, -57, 598, -20, 570, -18, 572, 400, 583, 385, 804, 383, 886, 506, -328, 509, -391, 438, -373, 381)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pprue"]
 size = Vector2(157, 407)
