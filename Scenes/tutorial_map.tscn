@@ -133,6 +133,8 @@ texture = ExtResource("5_o366d")
 z_index = 2
 texture = ExtResource("9_43iqt")
 script = ExtResource("7_b2r4m")
+high_index = 2
+y_threshold = 400.0
 
 [node name="room0_stuff" type="Sprite2D" parent="."]
 z_index = 3
