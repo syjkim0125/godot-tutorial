@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=24 format=3 uid="uid://homwnmb7ey2t"]
 
 [ext_resource type="Script" path="res://Scripts/Turotial_Map.gd" id="1_gje1w"]
 [ext_resource type="Texture2D" uid="uid://cqm4syw001rhn" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://Scripts/Interactions/Interaction_Template.gd" id="12_0db7d"]
 [ext_resource type="Texture2D" uid="uid://bhvv6wxjlcmco" path="res://icon.svg" id="12_jtp4r"]
 [ext_resource type="Script" path="res://Scripts/Interactions/Interaction_Info.gd" id="14_aeerp"]
+
+[sub_resource type="Environment" id="Environment_xxhso"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
 shader = ExtResource("6_63trq")
@@ -118,6 +120,7 @@ _data = {
 size = Vector2(95, 67)
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_xxhso")
 script = ExtResource("1_gje1w")
 
 [node name="room0_background" type="Sprite2D" parent="."]
