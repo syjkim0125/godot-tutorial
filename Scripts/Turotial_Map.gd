@@ -47,5 +47,12 @@ func _on_interaction_objects_input_event(viewport, event, shape_idx):
 		
 	$"../Player".is_going_to_interact = true
 	$"../Player".interactable_object = $InteractionObjects.get_child(shape_idx)
-	$"../Player".path = $"../WorldEnvironment".update_nav_path($"../../Main".path, $"../Player".get_global_position(), $InteractionObjects.get_child(shape_idx).destination)
 	$"../Player".interaction_animation = $InteractionObjects.get_child(shape_idx).interaction_animation
+	
+	var interaction_type = $InteractionObjects.get_child(shape_idx).interaction_type
+	
+	match interaction_type:
+		"info":
+			$InteractionObjects.get_child(shape_idx).infoCard = $"../Ui/InfoCard"
+			
+	$"../Player".path = $"../WorldEnvironment".update_nav_path($"../../Main".path, $"../Player".get_global_position(), $InteractionObjects.get_child(shape_idx).destination)

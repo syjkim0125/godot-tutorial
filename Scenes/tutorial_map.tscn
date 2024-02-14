@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://homwnmb7ey2t"]
+[gd_scene load_steps=23 format=3 uid="uid://homwnmb7ey2t"]
 
 [ext_resource type="Script" path="res://Scripts/Turotial_Map.gd" id="1_gje1w"]
 [ext_resource type="Texture2D" uid="uid://cqm4syw001rhn" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dn27l5euqicpi" path="res://Environment/Room0/room0_stuff.png" id="11_cbk6g"]
 [ext_resource type="Script" path="res://Scripts/Interactions/Interaction_Template.gd" id="12_0db7d"]
 [ext_resource type="Texture2D" uid="uid://bhvv6wxjlcmco" path="res://icon.svg" id="12_jtp4r"]
+[ext_resource type="Script" path="res://Scripts/Interactions/Interaction_Info.gd" id="14_aeerp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu4y5"]
 shader = ExtResource("6_63trq")
@@ -113,6 +114,9 @@ _data = {
 "RESET": SubResource("Animation_08fgk")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qysh"]
+size = Vector2(95, 67)
+
 [node name="WorldEnvironment" type="WorldEnvironment"]
 script = ExtResource("1_gje1w")
 
@@ -185,6 +189,13 @@ libraries = {
 
 [node name="Marker2D" type="Marker2D" parent="InteractionObjects/RandomInteraction"]
 position = Vector2(-32, 52)
+
+[node name="RandomInteraction2" type="CollisionShape2D" parent="InteractionObjects"]
+position = Vector2(-309.5, 423.5)
+shape = SubResource("RectangleShape2D_2qysh")
+script = ExtResource("14_aeerp")
+
+[node name="Marker2D" type="Marker2D" parent="InteractionObjects/RandomInteraction2"]
 
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
