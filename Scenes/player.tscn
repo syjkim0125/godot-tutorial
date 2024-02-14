@@ -104,7 +104,7 @@ animations = [{
 "texture": ExtResource("17_awxo8")
 }],
 "loop": true,
-"name": &"interact",
+"name": &"interact_simple",
 "speed": 5.0
 }, {
 "frames": [{

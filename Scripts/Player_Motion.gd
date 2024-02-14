@@ -9,6 +9,7 @@ var is_climbing: bool
 var is_going_to_interact: bool
 var interactable_object
 var interaction_timer: int = 1
+var interaction_animation: String
 
 func _ready():
 	is_climbing = false
@@ -95,7 +96,7 @@ func change_state(newState):
 			$PlayerSprite.play("move")
 		INTERACT:
 			interactable_object.interact()
-			$PlayerSprite.play("interact")
+			$PlayerSprite.play(interaction_animation)
 			
 	set_process(true)
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b037874bnmai0"]
+[gd_scene load_steps=5 format=3 uid="uid://b037874bnmai0"]
 
 [ext_resource type="PackedScene" uid="uid://cp1iegaja2e8i" path="res://Scenes/player.tscn" id="1_1ywod"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_m50hg"]
 [ext_resource type="PackedScene" uid="uid://homwnmb7ey2t" path="res://Scenes/tutorial_map.tscn" id="2_wqage"]
+[ext_resource type="PackedScene" uid="uid://c48l247ydw47y" path="res://Scenes/Ui.tscn" id="4_g4a8s"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -16,3 +17,5 @@ script = ExtResource("1_m50hg")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_wqage")]
+
+[node name="Ui" parent="." instance=ExtResource("4_g4a8s")]

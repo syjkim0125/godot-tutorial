@@ -166,26 +166,25 @@ position = Vector2(491.5, 185.5)
 shape = SubResource("RectangleShape2D_pprue")
 
 [node name="InteractionObjects" type="Area2D" parent="."]
-z_index = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionObjects"]
-z_index = 1
-position = Vector2(283, 380)
+[node name="RandomInteraction" type="CollisionShape2D" parent="InteractionObjects"]
+position = Vector2(283, 400)
 shape = SubResource("RectangleShape2D_tmxly")
 script = ExtResource("12_0db7d")
+interaction_animation = "interact_simple"
 
-[node name="Sprite2D" type="Sprite2D" parent="InteractionObjects/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="InteractionObjects/RandomInteraction"]
 position = Vector2(-9.53674e-07, 6.67572e-06)
 scale = Vector2(0.734375, 0.84375)
 texture = ExtResource("12_jtp4r")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractionObjects/CollisionShape2D/Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractionObjects/RandomInteraction/Sprite2D"]
 libraries = {
 "": SubResource("AnimationLibrary_h2xtx")
 }
 
-[node name="Marker2D" type="Marker2D" parent="InteractionObjects/CollisionShape2D"]
-position = Vector2(-19, 52)
+[node name="Marker2D" type="Marker2D" parent="InteractionObjects/RandomInteraction"]
+position = Vector2(-32, 52)
 
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
