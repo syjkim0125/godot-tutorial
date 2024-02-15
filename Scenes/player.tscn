@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cp1iegaja2e8i"]
+[gd_scene load_steps=38 format=3 uid="uid://cp1iegaja2e8i"]
 
 [ext_resource type="Script" path="res://Scripts/Player_Motion.gd" id="1_i8faq"]
 [ext_resource type="Texture2D" uid="uid://brt387uhc3cyk" path="res://Art/Player/Player_Sprite.png" id="2_67vdc"]
@@ -30,8 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://cw57otvveo5yf" path="res://Art/Player/Climb_Animation/player_climb0013.png" id="15_d83p1"]
 [ext_resource type="Texture2D" uid="uid://xhtrtaoffc0t" path="res://Art/Player/Move_Animation/player_move0012.png" id="15_mli8n"]
 [ext_resource type="Texture2D" uid="uid://cdt5u4koy6dsu" path="res://Art/Player/Move_Animation/player_move0013.png" id="16_eg756"]
+[ext_resource type="Texture2D" uid="uid://qvyttspdvds4" path="res://Art/Player/Interact_Animation/player_info_interaction_down.png" id="17_7505r"]
 [ext_resource type="Texture2D" uid="uid://dyn104g2r23ae" path="res://Art/Player/Interact_Animation/player_interact_simple.png" id="17_awxo8"]
 [ext_resource type="Texture2D" uid="uid://b2b0u7hrnni2b" path="res://Art/Player/Move_Animation/player_move0014.png" id="17_b33j5"]
+[ext_resource type="Texture2D" uid="uid://j6fhcwi1glfs" path="res://Art/Player/Interact_Animation/player_info_interaction_up.png" id="18_ld3jh"]
 [ext_resource type="Texture2D" uid="uid://bwxs8qjpy084h" path="res://Art/Player/Move_Animation/player_move0015.png" id="18_rritf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l11ef"]
@@ -97,6 +99,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_7505r")
+}],
+"loop": true,
+"name": &"interact_info_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ld3jh")
+}],
+"loop": true,
+"name": &"interact_info_up",
 "speed": 5.0
 }, {
 "frames": [{
