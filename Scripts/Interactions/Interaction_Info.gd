@@ -8,5 +8,4 @@ var interaction_type = "info"
 var infoCard
 
 func interact():
-	print("i am interacting")
 	infoCard.toggle(true)

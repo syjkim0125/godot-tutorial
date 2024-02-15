@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var player: CharacterBody2D = $"../Player"
+@onready var playerSprite: AnimatedSprite2D = $PlayerSprite
+
 var speed: int = 250
 var path: PackedVector2Array = []
 
@@ -29,58 +32,58 @@ func _process(delta):
 	pass
 	
 func move_along_path(distance):
-	var last_point = $"../Player".get_global_position()
+	var last_point = player.get_global_position()
 	
 	if(is_climbing):
-		$"../Player".change_state(CLIMB)
+		player.change_state(CLIMB)
 	
 	if(last_point.x < path[0].x):
-		$PlayerSprite.flip_h = false
+		playerSprite.flip_h = false
 	if(last_point.x > path[0].x):
-		$PlayerSprite.flip_h = true
+		playerSprite.flip_h = true
 	
 	while path.size():
 		var distance_between_points = last_point.distance_to(path[0])
 		if distance <= distance_between_points:
-			$"../Player".set_global_position(last_point.lerp(path[0], distance / distance_between_points))
+			player.set_global_position(last_point.lerp(path[0], distance / distance_between_points))
 			return
 			
 		distance -= distance_between_points
 		last_point = path[0]
 		path.remove_at(0)
 		
-	$"../Player".set_global_position(last_point)
+	player.set_global_position(last_point)
 	if(path.size() == 0):
 		if(is_going_to_interact):
-			$"../Player".change_state(INTERACT)
+			player.change_state(INTERACT)
 		else:
-			$"../Player".change_state(IDLE)
+			player.change_state(IDLE)
 	set_process(false)
 	
 func climb_along_path(distance):
-	var last_point = $"../Player".get_global_position()
+	var last_point = player.get_global_position()
 	
 	if(last_point.y > path[0].y):
-		$PlayerSprite.play("climb")
+		playerSprite.play("climb")
 	if(last_point.y < path[0].y):
-		$PlayerSprite.play("climb", true)
+		playerSprite.play("climb", true)
 		
 	if(!is_climbing):
-		$"../Player".change_state(MOVE)
+		player.change_state(MOVE)
 	
 	while path.size():
 		var distance_between_points = last_point.distance_to(path[0])
 		if distance <= distance_between_points:
-			$"../Player".set_global_position(last_point.lerp(path[0], distance / distance_between_points))
+			player.set_global_position(last_point.lerp(path[0], distance / distance_between_points))
 			return
 			
 		distance -= distance_between_points
 		last_point = path[0]
 		path.remove_at(0)
 		
-	$"../Player".set_global_position(last_point)
+	player.set_global_position(last_point)
 	if(path.size() == 0):
-		$"../Player".change_state(IDLE)
+		player.change_state(IDLE)
 	set_process(false)
 	
 func change_state(newState):
@@ -89,19 +92,19 @@ func change_state(newState):
 	match state:
 		IDLE:
 			if(!is_climbing):
-				$PlayerSprite.play("idle")
+				playerSprite.play("idle")
 			if(is_climbing):
-				$PlayerSprite.play("climb_idle")
+				playerSprite.play("climb_idle")
 		MOVE:
-			$PlayerSprite.play("move")
+			playerSprite.play("move")
 		INTERACT:
 			interactable_object.interact()
-			$PlayerSprite.play(interaction_animation)
+			playerSprite.play(interaction_animation)
 			
 	set_process(true)
 	
 func interact(delta):
 	interaction_timer -= delta
 	if(interaction_timer <= 0):
-		$"../Player".change_state(IDLE)
+		player.change_state(IDLE)
 		interaction_timer = 1
