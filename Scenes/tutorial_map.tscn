@@ -193,15 +193,18 @@ libraries = {
 [node name="Marker2D" type="Marker2D" parent="InteractionObjects/RandomInteraction"]
 position = Vector2(-32, 52)
 
-[node name="RandomInteraction2" type="CollisionShape2D" parent="InteractionObjects"]
+[node name="PileOfStuffInteraction" type="CollisionShape2D" parent="InteractionObjects"]
 z_index = 3
 position = Vector2(-591, 284)
 shape = SubResource("CircleShape2D_fs6qy")
 script = ExtResource("14_aeerp")
 interaction_animation = "interact_info_down"
 
-[node name="Marker2D" type="Marker2D" parent="InteractionObjects/RandomInteraction2"]
+[node name="Marker2D" type="Marker2D" parent="InteractionObjects/PileOfStuffInteraction"]
 position = Vector2(247, 153)
+
+[node name="CardMarker2D" type="Marker2D" parent="InteractionObjects/PileOfStuffInteraction"]
+position = Vector2(-12, -554)
 
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
