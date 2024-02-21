@@ -104,7 +104,13 @@ func change_state(newState):
 	set_process(true)
 	
 func interact(delta):
+	if(interaction_animation == "interact_info_down" || interaction_animation == "interact_info_up"):
+		return
 	interaction_timer -= delta
 	if(interaction_timer <= 0):
 		player.change_state(IDLE)
 		interaction_timer = 1
+
+
+func _on_ui_close_dialog():
+	player.change_state(IDLE)
