@@ -63,7 +63,8 @@ func _on_interaction_objects_input_event(viewport, event, shape_idx):
 		"info":
 			interactionObjects.get_child(shape_idx).infoCard = infoCard
 			infoCard.Text.text = interactionObjects.get_child(shape_idx).text
-			infoCard.set_global_position(interactionObjects.get_child(shape_idx).info_card_position.get_global_transform_with_canvas().origin)
+			var screen_top_left = Vector2(10, 10) # Adjust these values as needed
+			infoCard.global_position = screen_top_left
 			print("infoCard Position: ", infoCard.get_global_position())
 			
 			
