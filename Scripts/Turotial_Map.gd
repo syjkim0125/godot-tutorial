@@ -5,7 +5,7 @@ extends WorldEnvironment
 @onready var navigationRegion2D: NavigationRegion2D = $NavigationRegion2D
 @onready var line2D: Line2D = $Line2D
 @onready var interactionObjects: Area2D = $InteractionObjects
-@onready var infoCard: Control = $"../Ui/InfoCard"
+@onready var ui: CanvasLayer = $"../Ui"
 @onready var worldEnvironment: WorldEnvironment = $"../WorldEnvironment"
 
 var map: RID
@@ -61,11 +61,9 @@ func _on_interaction_objects_input_event(viewport, event, shape_idx):
 	
 	match interaction_type:
 		"info":
-			interactionObjects.get_child(shape_idx).infoCard = infoCard
-			infoCard.Text.text = interactionObjects.get_child(shape_idx).text
+			interactionObjects.get_child(shape_idx).infoCard = ui
+			ui.InfoCardText.text = interactionObjects.get_child(shape_idx).text
 			var screen_top_left = Vector2(10, 10) # Adjust these values as needed
-			infoCard.global_position = screen_top_left
-			print("infoCard Position: ", infoCard.get_global_position())
-			
+			ui.InfoCard.global_position = screen_top_left
 			
 	player.path = worldEnvironment.update_nav_path(main.path, player.get_global_position(), interactionObjects.get_child(shape_idx).destination)

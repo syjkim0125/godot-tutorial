@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c48l247ydw47y"]
+[gd_scene load_steps=36 format=3 uid="uid://c48l247ydw47y"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Info_Card.gd" id="1_38liy"]
 [ext_resource type="Texture2D" uid="uid://cabr1i6q3tqy" path="res://Art/UI/InfoCard/InfoCard0001.png" id="1_p0vnt"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bh60tgpjihpx3" path="res://Art/UI/InfoCard/InfoCard0029.png" id="29_twi8a"]
 [ext_resource type="Texture2D" uid="uid://csyhar4ajbbu" path="res://Art/UI/InfoCard/InfoCard0030.png" id="30_528xm"]
 [ext_resource type="Texture2D" uid="uid://djth2yek1gxh" path="res://Art/UI/InfoCard/InfoCard0031.png" id="31_2c1h0"]
+[ext_resource type="Texture2D" uid="uid://dtmmexjxskjn7" path="res://Art/UI/Buttons/CrestButton.png" id="33_hmxwa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gia8r"]
 animations = [{
@@ -139,12 +140,12 @@ subpixel_positioning = 0
 
 [node name="Ui" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_38liy")
 
 [node name="InfoCard" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
-script = ExtResource("1_38liy")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InfoCard"]
@@ -196,4 +197,15 @@ blahblahblah
 blahblahblah
 blahblahblah"
 
-[connection signal="animation_finished" from="InfoCard/AnimatedSprite2D" to="InfoCard" method="_on_animated_sprite_2d_animation_finished"]
+[node name="Button" type="Button" parent="InfoCard"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 399.0
+offset_right = 388.0
+offset_bottom = 549.0
+icon = ExtResource("33_hmxwa")
+flat = true
+expand_icon = true
+
+[connection signal="animation_finished" from="InfoCard/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="InfoCard/Button" to="." method="_on_button_pressed"]
