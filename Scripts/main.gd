@@ -12,8 +12,10 @@ func setup_nav_server():
 	worldEnvironment.setup_nav_server()
 
 func _input(event):
-	if !Input.is_action_just_pressed("ui_leftMouseClick") || player.is_going_to_interact:
+	if !Input.is_action_just_pressed("ui_leftMouseClick") || player.state == player.INTERACT:
 		return
+		
+	player.clear_action()
 		
 	var new_path = worldEnvironment.update_nav_path(path, player.get_global_position(), get_global_mouse_position())
 	

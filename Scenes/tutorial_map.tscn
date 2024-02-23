@@ -217,10 +217,10 @@ script = ExtResource("14_aeerp")
 interaction_animation = "interact_info_down"
 
 [node name="Marker2D" type="Marker2D" parent="InteractionObjects/WallFrameInteraction"]
-position = Vector2(247, 153)
+position = Vector2(-54, 246)
 
 [node name="CardMarker2D" type="Marker2D" parent="InteractionObjects/WallFrameInteraction"]
-position = Vector2(-12, -554)
+position = Vector2(111, -359)
 
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]

@@ -47,7 +47,7 @@ func _on_climb_area_body_exited(body):
 	pass
 
 func _on_interaction_objects_input_event(viewport, event, shape_idx):
-	if !Input.is_action_just_pressed("ui_leftMouseClick"):
+	if !Input.is_action_just_pressed("ui_leftMouseClick") || player.state == player.INTERACT:
 		return
 		
 	player.is_going_to_interact = true

@@ -10,7 +10,7 @@ enum {IDLE, MOVE, CLIMB, INTERACT}
 var state = IDLE
 var is_climbing: bool
 var is_going_to_interact: bool
-var interactable_object
+var interactable_object: Node
 var interaction_animation: String
 
 func _ready():
@@ -100,6 +100,10 @@ func change_state(newState):
 			playerSprite.play(interaction_animation)
 	
 	set_process(true)
+	
+func clear_action():
+	interactable_object = null
+	is_going_to_interact = false
 
 func _on_ui_close_dialog():
 	change_state(IDLE)
