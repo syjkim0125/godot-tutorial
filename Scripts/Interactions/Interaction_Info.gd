@@ -1,7 +1,7 @@
 extends Node
 
-@onready var destination = $Marker2D.get_global_position()
-@onready var info_card_position: Marker2D = $CardMarker2D
+@onready var destination: Vector2 = $Marker2D.get_global_position()
+@onready var info_card_position: Vector2 = $CardMarker2D.get_global_position()
 @export var interaction_animation: String
 @export var text = "A pile of wooden boxes and barrels. A fallen barrel reveals a compilation of fur."
 @export var right: bool

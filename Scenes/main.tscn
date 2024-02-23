@@ -28,7 +28,5 @@ script = ExtResource("1_m50hg")
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_wqage")]
 
 [node name="Ui" parent="." instance=ExtResource("4_g4a8s")]
-offset = Vector2(-900, -500)
-transform = Transform2D(1, 0, 0, 1, -900, -500)
 
 [connection signal="close_dialog" from="Ui" to="Player" method="_on_ui_close_dialog"]

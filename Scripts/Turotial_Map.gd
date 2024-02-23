@@ -60,8 +60,7 @@ func _on_interaction_objects_input_event(viewport, event, shape_idx):
 		"info":
 			interactionObjects.get_child(shape_idx).infoCard = ui
 			ui.infoCardText.text = interactionObjects.get_child(shape_idx).text
-			var screen_top_left = Vector2(10, 10) # Adjust these values as needed
-			ui.infoCard.global_position = screen_top_left
+			ui.infoCard.global_position = interactionObjects.get_child(shape_idx).info_card_position
 			
 	player.path = worldEnvironment.update_nav_path(main.path, player.get_global_position(), interactionObjects.get_child(shape_idx).destination)
 
