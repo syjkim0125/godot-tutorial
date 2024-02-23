@@ -34,20 +34,17 @@ func update_nav_path(path, start_position, end_position):
 	path.remove_at(0)
 	return path
 
-
 func _on_climb_area_body_entered(body):
 	if body.get_name() != "Player":
 		return
 	player.is_climbing = true
 	pass
 
-
 func _on_climb_area_body_exited(body):
 	if body.get_name() != "Player":
 		return
 	player.is_climbing = false
 	pass
-
 
 func _on_interaction_objects_input_event(viewport, event, shape_idx):
 	if !Input.is_action_just_pressed("ui_leftMouseClick"):
@@ -67,3 +64,6 @@ func _on_interaction_objects_input_event(viewport, event, shape_idx):
 			ui.infoCard.global_position = screen_top_left
 			
 	player.path = worldEnvironment.update_nav_path(main.path, player.get_global_position(), interactionObjects.get_child(shape_idx).destination)
+
+func _on_animation_player_animation_finished(anim_name):
+	player.change_state(player.IDLE)

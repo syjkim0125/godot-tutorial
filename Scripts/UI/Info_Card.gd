@@ -5,8 +5,6 @@ extends Node
 @onready var infoCardText: RichTextLabel = $"InfoCard/RichTextLabel"
 @onready var button: Button = $"InfoCard/Button"
 
-#var tween: Tween
-
 signal close_dialog
 
 func _ready():
@@ -28,7 +26,6 @@ func clear():
 	infoCardText.text = ""
 	infoCardText.visible = false
 	button.visible = false
-
 
 func _on_animated_sprite_2d_animation_finished():
 	infoCardText.visible = true

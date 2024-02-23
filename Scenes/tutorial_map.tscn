@@ -209,3 +209,4 @@ position = Vector2(-12, -554)
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]
 [connection signal="input_event" from="InteractionObjects" to="." method="_on_interaction_objects_input_event"]
+[connection signal="animation_finished" from="InteractionObjects/RandomInteraction/Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
