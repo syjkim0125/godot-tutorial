@@ -12,6 +12,7 @@ var is_climbing: bool
 var is_going_to_interact: bool
 var interactable_object: Node
 var interaction_animation: String
+var interaction_direction: bool
 
 func _ready():
 	is_climbing = false
@@ -98,6 +99,7 @@ func change_state(newState):
 		INTERACT:
 			interactable_object.interact()
 			playerSprite.play(interaction_animation)
+			face_direction(interaction_direction)
 	
 	set_process(true)
 	
@@ -107,3 +109,9 @@ func clear_action():
 
 func _on_ui_close_dialog():
 	change_state(IDLE)
+	
+func face_direction(right):
+	if(right):
+		playerSprite.flip_h = false
+	else:
+		playerSprite.flip_h = true

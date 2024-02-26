@@ -53,6 +53,7 @@ func _on_interaction_objects_input_event(viewport, event, shape_idx):
 	player.is_going_to_interact = true
 	player.interactable_object = interactionObjects.get_child(shape_idx)
 	player.interaction_animation = interactionObjects.get_child(shape_idx).interaction_animation
+	player.interaction_direction = interactionObjects.get_child(shape_idx).right
 	
 	var interaction_type = interactionObjects.get_child(shape_idx).interaction_type
 	
