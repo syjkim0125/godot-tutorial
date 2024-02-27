@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://c48l247ydw47y"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Info_Card.gd" id="1_38liy"]
+[ext_resource type="Script" path="res://Scripts/UI/Ui.gd" id="1_lna7k"]
 [ext_resource type="Texture2D" uid="uid://cabr1i6q3tqy" path="res://Art/UI/InfoCard/InfoCard0001.png" id="1_p0vnt"]
 [ext_resource type="Texture2D" uid="uid://ckvehqo8bs252" path="res://Art/UI/InfoCard/InfoCard0002.png" id="2_rngol"]
 [ext_resource type="Texture2D" uid="uid://dkljdkmjksoyr" path="res://Art/UI/InfoCard/InfoCard0003.png" id="3_ws840"]
@@ -140,7 +140,7 @@ subpixel_positioning = 0
 
 [node name="Ui" type="CanvasLayer"]
 follow_viewport_enabled = true
-script = ExtResource("1_38liy")
+script = ExtResource("1_lna7k")
 
 [node name="InfoCard" type="Control" parent="."]
 layout_mode = 3

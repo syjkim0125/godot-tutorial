@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://homwnmb7ey2t"]
 
-[ext_resource type="Script" path="res://Scripts/Turotial_Map.gd" id="1_gje1w"]
+[ext_resource type="Script" path="res://Scripts/Tutorial_Map.gd" id="1_i6812"]
 [ext_resource type="Texture2D" uid="uid://cqm4syw001rhn" path="res://Art/Environment/room0_background.png" id="2_eayi5"]
 [ext_resource type="Texture2D" uid="uid://bd0ok2r61od0p" path="res://Art/Environment/room0_sideWalls.png" id="3_tynwc"]
 [ext_resource type="Texture2D" uid="uid://dcv7qffecpchy" path="res://Art/Environment/room0_floor.png" id="4_1l0bs"]
@@ -124,7 +124,7 @@ size = Vector2(98, 51)
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_xxhso")
-script = ExtResource("1_gje1w")
+script = ExtResource("1_i6812")
 
 [node name="room0_background" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -182,6 +182,7 @@ position = Vector2(283, 400)
 shape = SubResource("RectangleShape2D_tmxly")
 script = ExtResource("12_0db7d")
 interaction_animation = "interact_simple"
+right = true
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractionObjects/RandomInteraction"]
 position = Vector2(-9.53674e-07, 6.67572e-06)

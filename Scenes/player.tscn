@@ -190,7 +190,7 @@ script = ExtResource("1_i8faq")
 z_index = 1
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_l11ef")
-animation = &"interact_info_up"
+animation = &"idle"
 speed_scale = 4.0
 offset = Vector2(0, -220)
 
