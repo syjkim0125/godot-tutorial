@@ -1,3 +1,127 @@
-[gd_scene format=3 uid="uid://b04w3lasmyidm"]
+[gd_scene load_steps=10 format=3 uid="uid://b04w3lasmyidm"]
+
+[ext_resource type="Texture2D" uid="uid://c2dlmgs1gy4um" path="res://Art/UI/Inventory/Inventory_Base.png" id="1_2lfe7"]
+[ext_resource type="Texture2D" uid="uid://bdd67hdy3u65f" path="res://Art/UI/Inventory/Inventory_Slot.png" id="2_s5yok"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1n57b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24rij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y5338"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5pxr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0ejc"]
+
+[sub_resource type="Theme" id="Theme_jirwj"]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/decrement_pressed = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/icons/increment_pressed = null
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_1n57b")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_24rij")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_y5338")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_l5pxr")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_b0ejc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xgehb"]
+texture = ExtResource("2_s5yok")
 
 [node name="Inventory" type="Node2D"]
+
+[node name="InventoryContainer" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_2lfe7")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryContainer"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 113.0
+offset_right = 938.0
+offset_bottom = 337.0
+theme = SubResource("Theme_jirwj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 54
+
+[node name="Slot" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
+
+[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 136.0
+expand_mode = 3
+
+[node name="Slot2" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
+
+[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot2"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 136.0
+expand_mode = 3
+
+[node name="Slot3" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
+
+[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot3"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 136.0
+expand_mode = 3
+
+[node name="Slot4" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
+
+[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot4"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 136.0
+expand_mode = 3
+
+[node name="Slot5" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
+
+[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot5"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 136.0
+expand_mode = 3
+
+[node name="Slot6" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
+
+[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot6"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 24.0
+offset_right = 143.0
+offset_bottom = 136.0
+expand_mode = 3
