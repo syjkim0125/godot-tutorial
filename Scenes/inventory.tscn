@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b04w3lasmyidm"]
+[gd_scene load_steps=18 format=3 uid="uid://b04w3lasmyidm"]
 
 [ext_resource type="Texture2D" uid="uid://c2dlmgs1gy4um" path="res://Art/UI/Inventory/Inventory_Base.png" id="1_2lfe7"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Inventory.gd" id="1_en5ol"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bdd67hdy3u65f" path="res://Art/UI/Inventory/Inventory_Slot.png" id="2_s5yok"]
 [ext_resource type="Texture2D" uid="uid://5ed4cfenvhrv" path="res://Art/UI/Inventory/OldStorageKey.png" id="5_erag4"]
 [ext_resource type="Texture2D" uid="uid://ce3xlxwfqt2hu" path="res://Art/UI/Inventory/WolfCrest.png" id="6_dynui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oy0a0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dggx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xc62h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqx1a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1n57b"]
 
@@ -43,20 +51,24 @@ texture = ExtResource("1_2lfe7")
 
 [node name="LeftArrowButton" type="Button" parent="InventoryContainer"]
 layout_mode = 0
-offset_left = 37.0
+offset_left = 25.0
 offset_top = 121.0
-offset_right = 108.0
+offset_right = 96.0
 offset_bottom = 253.0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oy0a0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8dggx")
 icon = ExtResource("2_2yojt")
 flat = true
 
 [node name="RightArrowButton" type="Button" parent="InventoryContainer"]
 layout_mode = 0
-offset_left = 994.0
+offset_left = 1000.0
 offset_top = 121.0
-offset_right = 1065.0
+offset_right = 1071.0
 offset_bottom = 253.0
 scale = Vector2(-1, 1)
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xc62h")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqx1a")
 icon = ExtResource("2_2yojt")
 flat = true
 
