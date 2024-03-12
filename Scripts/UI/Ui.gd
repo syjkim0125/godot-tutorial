@@ -1,9 +1,9 @@
 extends Node
 
 @onready var infoCard: Control = $InfoCard
-@onready var animationSprite: AnimatedSprite2D = $"InfoCard/AnimatedSprite2D"
-@onready var infoCardText: RichTextLabel = $"InfoCard/RichTextLabel"
-@onready var button: Button = $"InfoCard/Button"
+@onready var animationSprite: AnimatedSprite2D = $InfoCard/AnimatedSprite2D
+@onready var infoCardText: RichTextLabel = $InfoCard/RichTextLabel
+@onready var button: Button = $InfoCard/Button
 
 signal close_dialog
 
