@@ -49,6 +49,7 @@ texture = ExtResource("2_s5yok")
 script = ExtResource("1_en5ol")
 
 [node name="InventoryContainer" type="TextureRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_2lfe7")
@@ -185,4 +186,5 @@ zoom = Vector2(1.3, 1.3)
 
 [connection signal="pressed" from="InventoryContainer/LeftArrowButton" to="." method="_on_left_arrow_button_pressed"]
 [connection signal="pressed" from="InventoryContainer/RightArrowButton" to="." method="_on_right_arrow_button_pressed"]
+[connection signal="pressed" from="BackPackButton" to="." method="_on_back_pack_button_pressed"]
 [connection signal="toggled" from="BackPackButton" to="BackPackButton" method="_on_toggled"]
