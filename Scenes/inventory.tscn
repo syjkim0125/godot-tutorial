@@ -170,10 +170,10 @@ offset_bottom = 136.0
 expand_mode = 3
 
 [node name="BackPackButton" type="Button" parent="."]
-offset_left = -454.0
-offset_top = -57.0
-offset_right = 66.0
-offset_bottom = 463.0
+offset_left = -504.0
+offset_top = -55.0
+offset_right = 16.0
+offset_bottom = 465.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1mu7i")
 toggle_mode = true
 icon = ExtResource("7_4bmpu")
