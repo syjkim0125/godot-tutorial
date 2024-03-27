@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://b04w3lasmyidm"]
+[gd_scene load_steps=19 format=3 uid="uid://b04w3lasmyidm"]
 
 [ext_resource type="Texture2D" uid="uid://c2dlmgs1gy4um" path="res://Art/UI/Inventory/Inventory_Base.png" id="1_2lfe7"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Inventory.gd" id="1_en5ol"]
 [ext_resource type="Texture2D" uid="uid://dofpi6x5i46s6" path="res://Art/UI/Inventory/Inventory_Arrow.png" id="2_2yojt"]
-[ext_resource type="Texture2D" uid="uid://bdd67hdy3u65f" path="res://Art/UI/Inventory/Inventory_Slot.png" id="2_s5yok"]
+[ext_resource type="PackedScene" uid="uid://b0k5aa32n6cjo" path="res://Scenes/slot.tscn" id="4_dq3x0"]
 [ext_resource type="Texture2D" uid="uid://5ed4cfenvhrv" path="res://Art/UI/Inventory/OldStorageKey.png" id="5_erag4"]
-[ext_resource type="Texture2D" uid="uid://ce3xlxwfqt2hu" path="res://Art/UI/Inventory/WolfCrest.png" id="6_dynui"]
 [ext_resource type="Texture2D" uid="uid://fculuvo32gg4" path="res://Art/UI/Inventory/BackPackClosed.png" id="7_4bmpu"]
 [ext_resource type="Script" path="res://Scripts/Inventory/BackPackButton.gd" id="8_kk7d0"]
 
@@ -40,16 +39,13 @@ HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_y5338")
 HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_l5pxr")
 HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_b0ejc")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xgehb"]
-texture = ExtResource("2_s5yok")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mu7i"]
 
 [node name="Inventory" type="Node2D"]
+position = Vector2(500, 0)
 script = ExtResource("1_en5ol")
 
 [node name="InventoryContainer" type="TextureRect" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_2lfe7")
@@ -89,85 +85,26 @@ theme = SubResource("Theme_jirwj")
 layout_mode = 2
 theme_override_constants/separation = 54
 
-[node name="Slot" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Slot" parent="InventoryContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_dq3x0")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
 
-[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 136.0
+[node name="Item" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot" index="0"]
 texture = ExtResource("5_erag4")
-expand_mode = 3
 
-[node name="Slot2" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Slot2" parent="InventoryContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_dq3x0")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
 
-[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot2"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 136.0
-expand_mode = 3
-
-[node name="Slot3" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Slot3" parent="InventoryContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_dq3x0")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
 
-[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot3"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 136.0
-expand_mode = 3
-
-[node name="Slot4" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Slot4" parent="InventoryContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_dq3x0")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
 
-[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot4"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 136.0
-expand_mode = 3
-
-[node name="Slot5" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Slot5" parent="InventoryContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_dq3x0")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
 
-[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot5"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 136.0
-texture = ExtResource("6_dynui")
-expand_mode = 3
-
-[node name="Slot6" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Slot6" parent="InventoryContainer/ScrollContainer/HBoxContainer" instance=ExtResource("4_dq3x0")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xgehb")
-
-[node name="Item" type="TextureRect" parent="InventoryContainer/ScrollContainer/HBoxContainer/Slot6"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 24.0
-offset_right = 143.0
-offset_bottom = 136.0
-expand_mode = 3
 
 [node name="BackPackButton" type="Button" parent="."]
 offset_left = -504.0
@@ -180,11 +117,9 @@ icon = ExtResource("7_4bmpu")
 flat = true
 script = ExtResource("8_kk7d0")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(288, 374)
-zoom = Vector2(1.3, 1.3)
-
 [connection signal="pressed" from="InventoryContainer/LeftArrowButton" to="." method="_on_left_arrow_button_pressed"]
 [connection signal="pressed" from="InventoryContainer/RightArrowButton" to="." method="_on_right_arrow_button_pressed"]
 [connection signal="pressed" from="BackPackButton" to="." method="_on_back_pack_button_pressed"]
 [connection signal="toggled" from="BackPackButton" to="BackPackButton" method="_on_toggled"]
+
+[editable path="InventoryContainer/ScrollContainer/HBoxContainer/Slot"]
